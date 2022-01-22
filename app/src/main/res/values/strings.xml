@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">NewYorkTimesArticles</string>
+    <string name="loader_title">NYTimes</string>
+
+
+    <!--Error Messages-->
+    <string name="txt_session_timeout">Your Session has been expired or Connection with server is lost, Please login again!</string>
+
+</resources>
