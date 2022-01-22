@@ -1,5 +1,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools">
 
 
     <data>
@@ -17,75 +18,106 @@
         android:id="@+id/rl_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp">
-
+        android:layout_margin="3dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="true"
             android:clipChildren="false"
             android:clipToPadding="false"
             android:divider="@android:color/transparent"
             android:dividerHeight="0.0px"
+            android:focusable="true"
+            android:onClick="@{vm.onItemSelection()}"
             card_view:cardBackgroundColor="@android:color/white"
             card_view:cardElevation="2dp"
-
-            android:clickable="true"
-            android:focusable="true" android:onClick="@{vm.onItemSelection()}"
             card_view:cardUseCompatPadding="true">
 
-            <RelativeLayout
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp">
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp"
+                >
 
-                <TextView
-                    android:id="@+id/tv_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <ImageView
+                    android:layout_width="65dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
                     android:layout_margin="10dp"
-                    android:text="@{vm.title}"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:src="@drawable/img"
+                    app:imageUri="@{vm.imageUri}"/>
 
-
-                <TextView
-                    android:id="@+id/tv_source"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_title"
-                    android:layout_marginStart="10dp"
-                    android:text="@{vm.source}"
-                    android:textColor="@color/teal_700"
-                    android:textSize="15sp" />
+                    android:layout_weight="1.5"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@{vm.title}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_title"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
 
 
-                <TextView
-                    android:id="@+id/tv_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_source"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="30dp"
-                    android:text="@{vm.date}"
-                    android:textColor="@color/teal_700"
-                    android:textSize="15sp" />
+                        <TextView
+                            android:id="@+id/tv_source"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            android:text="@{vm.source}"
+                            android:textColor="@color/teal_200"
+                            android:textSize="14sp" />
+
+
+                        <TextView
+                            android:id="@+id/tv_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_weight="1"
+                            android:letterSpacing=".05"
+                            android:text="@{vm.date}"
+                            android:textColor="@color/teal_200"
+                            android:textSize="14sp"/>
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
 
                 <ImageView
                     android:id="@+id/iv_fwd"
                     android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerInParent="true"
+                    android:layout_height="20dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
+                    android:layout_gravity="center|end"
                     android:src="@drawable/forward_arrow"
-                    android:visibility="visible" />
-            </RelativeLayout>
+                    android:visibility="visible"
+                    card_view:tint="@color/teal_700" />
+            </LinearLayout>
+
+
         </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
